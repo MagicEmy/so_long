@@ -1,0 +1,27 @@
+Parsing:
+
+I. Map
+-nr arg == 2
+-if my map ends in .ber and nothing else
+-check if when you open the file fd != -1
+-get next line
+-strjoin
+-ft_split(str, '\n');
+-char **map;
+-check if it s rectangle
+
+-check if you have walls (ONLY WALLS ARE 1's)
+-check if there are only 1 0 C E P in the map
+-check if there is only one E and P, C > 0
+
+-check valid path to every COLECT and EXIT (red blob games, check flood fill
+google that)
+
+-draw your shit!
+
+typedef struct tile
+{
+	t_pos	pos;
+	enum_type_tile
+	mlx_image_t 
+}
