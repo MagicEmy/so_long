@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/23 19:33:42 by emlicame      #+#    #+#                 */
-/*   Updated: 2022/09/26 18:38:01 by emlicame      ########   odam.nl         */
+/*   Updated: 2022/10/03 17:38:17 by emanuela      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,6 @@
 #define WIDTH 256
 #define HEIGHT 256
 #define TILE_SIZE 64
-
-typedef struct s_info
-{
-	mlx_t			*mlx;
-	mlx_image_t		*tile;
-}	t_info;
 
 mlx_image_t	*create_image(char *path, t_info *data)
 {
@@ -62,12 +56,14 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 		data->tile->instances[1].enabled = false;
 }
 
-int32_t	main(void)
+int32_t	main(int argc, char **argv)
 {
 	mlx_t		*mlx;
 	mlx_image_t	*tile_img;
 	t_info		info;
 
+	if (argc != 2)
+		error_exit("Arguments are not valid");
 	mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true);
 	if (!mlx)
 		exit(EXIT_FAILURE);
@@ -78,6 +74,7 @@ int32_t	main(void)
 	info.tile = tile_img;
 	mlx_image_to_window(mlx, tile_img, 64, 64); // z = 0
 	mlx_image_to_window(mlx, tile_img, 0, 0); // z = 1
+	parse_map(argv[1], &info);
 	mlx_key_hook(mlx, key_hook, &info);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);

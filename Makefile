@@ -3,6 +3,8 @@ INC			:=	-I include
 HEADERS		:=	include/so_long.h
 SRC			:=	main.c
 OBJ			:= $(SRC:%.c=obj/%.o)
+LIBFT		:= libft/libft.a
+LIBFT_DIR	:= libft
 MLX 		:= MLX42/libmlx42.a
 MLX_FLAGS 	:= -I include -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 MLX_DIR 	:= MlX42/
