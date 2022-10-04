@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/09/23 19:33:42 by emlicame      #+#    #+#                 */
-/*   Updated: 2022/10/03 17:38:17 by emanuela      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/23 19:33:42 by emlicame          #+#    #+#             */
+/*   Updated: 2022/10/04 11:47:41 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #define WIDTH 256
 #define HEIGHT 256
 #define TILE_SIZE 64
+
 
 mlx_image_t	*create_image(char *path, t_info *data)
 {
@@ -64,7 +65,9 @@ int32_t	main(int argc, char **argv)
 
 	if (argc != 2)
 		error_exit("Arguments are not valid");
+	map_validation(argv[1]);
 	mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true);
+	// mlx = mlx_init(len_str * TILE_+SIZE, nr_nl * TILE_SIZE, "MLX42", false!!);
 	if (!mlx)
 		exit(EXIT_FAILURE);
 	info.mlx = mlx;
@@ -74,7 +77,6 @@ int32_t	main(int argc, char **argv)
 	info.tile = tile_img;
 	mlx_image_to_window(mlx, tile_img, 64, 64); // z = 0
 	mlx_image_to_window(mlx, tile_img, 0, 0); // z = 1
-	parse_map(argv[1], &info);
 	mlx_key_hook(mlx, key_hook, &info);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
