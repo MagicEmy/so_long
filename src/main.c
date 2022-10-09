@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 19:33:42 by emlicame          #+#    #+#             */
-/*   Updated: 2022/10/04 11:47:41 by emlicame         ###   ########.fr       */
+/*   Updated: 2022/10/09 18:15:30 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int32_t	main(int argc, char **argv)
 	if (argc != 2)
 		error_exit("Arguments are not valid");
 	map_validation(argv[1]);
+	//map_parsing(argv[1], &info);
 	mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true);
 	// mlx = mlx_init(len_str * TILE_+SIZE, nr_nl * TILE_SIZE, "MLX42", false!!);
 	if (!mlx)
