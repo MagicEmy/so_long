@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   map_parsing.c                                      :+:    :+:            */
+/*   init_context.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: emlicame <emlicame@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/09 18:15:53 by emlicame      #+#    #+#                 */
-/*   Updated: 2022/12/26 13:10:57 by emanuela      ########   odam.nl         */
+/*   Updated: 2022/12/21 11:32:46 by emanuela      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-// char	**validate_map(char *mapline)
-// {
-// 	//TODO
-// 	(void)mapline;
-// 	char **dummy;
-// 	dummy = NULL;
-// 	return dummy; 
-// check only 1- 0 -P - C -E
-// }
+mlx_image_t	*create_image(char *path, t_data *data)
+{
+	mlx_texture_t	*txt;
+	mlx_image_t		*img;
 
-// void	map_parsing(char *map_line, t_data *data)
-// {
-// //se tutto va bene mi tengo la matrice dentro map
-// 	data->map = validate_map(map_line);
-// }
+	txt = mlx_load_png(path);
+	if (txt == NULL)
+		return (NULL);
+	img = mlx_texture_to_image(data->mlx, txt);
+	if (img == NULL)
+		return (NULL);
+	return (img);
+}
+
+void	init_context(t_data *data)
+{
+	mlx_image_t	*tile_img;
+
+	tile_img = create_image("images/tile.png", data);
+	if (tile_img == NULL)
+		exit(EXIT_FAILURE);
+	data->tile = tile_img;
+	mlx_image_to_window(data->mlx, tile_img, 64, 64); // z = 0
+	mlx_image_to_window(data->mlx, tile_img, 0, 0);   // z = 1
+}

@@ -1,85 +1,77 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/23 19:33:42 by emlicame          #+#    #+#             */
-/*   Updated: 2022/10/09 18:15:30 by emlicame         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   main.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/09/23 19:33:42 by emlicame      #+#    #+#                 */
+/*   Updated: 2022/12/26 13:12:02 by emanuela      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <memory.h>
-#define WIDTH 256
-#define HEIGHT 256
-#define TILE_SIZE 64
 
-
-mlx_image_t	*create_image(char *path, t_info *data)
+void	error_exit(char *text)
 {
-	mlx_texture_t	*txt;
-	mlx_image_t		*img;
-
-	txt = mlx_load_png(path);
-	if (txt == NULL)
-		return (NULL);
-	img = mlx_texture_to_image(data->mlx, txt);
-	if (img == NULL)
-		return (NULL);
-	return (img);
+	ft_putstr_fd("Error\n", 2);
+	ft_putendl_fd(text, 2);
+	exit(EXIT_FAILURE);
 }
 
-void	key_hook(mlx_key_data_t keydata, void *param)
+void	ft_free_mem(char ***array)
 {
-	t_info	*data;
+	int	i;
 
-	data = (t_info *)param;
-	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+	i = 0;
+	if (!*array)
+		return ;
+	while ((*array)[i])
 	{
-		//free txt, img
-		mlx_close_window(data->mlx);
+		free((*array)[i]);
+		(*array)[i] = NULL;
+		i++;
 	}
-	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
-		data->tile->instances->x += TILE_SIZE;
-	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
-		data->tile->instances->x -= TILE_SIZE;
-	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
-		data->tile->instances->y -= TILE_SIZE;
-	if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
-		data->tile->instances->y += TILE_SIZE;
-	if (data->tile->instances[0].x == data->tile->instances[1].x && \
-	data->tile->instances[0].y == data->tile->instances[1].y)
-		data->tile->instances[1].enabled = false;
+	free(*array);
+	*array = NULL;
+}
+
+t_data	*data_init(void)
+{
+	t_data	*data;
+
+	data = malloc(sizeof(t_data));
+	if (!data)
+		error_exit("Memory allocation failed.");
+	data->width = 0;
+	data->height = 0;
+	data->map = (char **)malloc(sizeof (char *) * 1);
+	if (!data->map)
+		error_exit("Memory allocation failed.");
+	return (data);
 }
 
 int32_t	main(int argc, char **argv)
 {
 	mlx_t		*mlx;
-	mlx_image_t	*tile_img;
-	t_info		info;
+	t_data		*data;
 
+	data = NULL;
 	if (argc != 2)
-		error_exit("Arguments are not valid");
-	map_validation(argv[1]);
-	//map_parsing(argv[1], &info);
+		error_exit("Arguments are not valid.");
+	data = data_init();
+	mapfile_validation(argv[1], data);
 	mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true);
-	// mlx = mlx_init(len_str * TILE_+SIZE, nr_nl * TILE_SIZE, "MLX42", false!!);
 	if (!mlx)
 		exit(EXIT_FAILURE);
-	info.mlx = mlx;
-	tile_img = create_image("images/tile.png", &info);
-	if (tile_img == NULL)
-		return (EXIT_FAILURE);
-	info.tile = tile_img;
-	mlx_image_to_window(mlx, tile_img, 64, 64); // z = 0
-	mlx_image_to_window(mlx, tile_img, 0, 0); // z = 1
-	mlx_key_hook(mlx, key_hook, &info);
+	data->mlx = mlx;
+	init_context(data);
+	mlx_key_hook(mlx, key_hook, data);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
+	// ft_free_mem(&data->map);
+	free(data);
 	return (EXIT_SUCCESS);
 }
+
+	// mlx = mlx_init(len_str * TILE_+SIZE, nr_nl * TILE_SIZE, "MLX42", false!!);
