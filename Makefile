@@ -1,10 +1,14 @@
 NAME		:=	so_long
 INC			:=	-I include -I libft
 HEADERS		:=	include/so_long.h
-SRC			:=	main.c \
-				map_validation.c \
+SRC			:=	game.c \
 				get_next_line.c \
-				get_next_line_utils.c
+				get_next_line_utils.c \
+				main.c \
+				map_parsing.c \
+				mapfile_validation.c \
+				sl_get_images.c \
+				sl_images_to_window.c
 OBJ			:= $(SRC:%.c=obj/%.o)
 LIBFT		:= libft/libft.a
 LIBFT_DIR	:= libft/
@@ -19,7 +23,7 @@ all:	$(NAME)
 $(NAME): $(OBJ) $(HEADERS) $(MLX) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJ) $(INC) $(MLX) $(LIBFT) -o $(NAME) -I include -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 
-obj/%.o: src/%.c
+obj/%.o: src/%.c $(HEADERS)
 	@mkdir -p obj
 	@$(CC) $(CFLAGS) $(INC) -o $@ -c $<
 

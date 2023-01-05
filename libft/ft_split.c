@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_split.c                                         :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/12/13 17:14:53 by emlicame      #+#    #+#                 */
-/*   Updated: 2021/12/13 17:14:54 by emlicame      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/13 17:14:53 by emlicame          #+#    #+#             */
+/*   Updated: 2023/01/05 13:48:09 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,25 @@ char	**ft_split(char const *s, char c);
 size_t	ft_sep_count(char const *s, char c);
 int		ft_alloc_copy(char const *s, char c, char **split, size_t sep);
 int		ft_free_mem(char **split);
-/*
-int	main(void)
-{
-	char		c;
-	char const	*s;
-	char		**ptr;
-	int			cc;
 
-	c = ' ';
-	cc = 0;
-	s = "gg   gkgkgkuhi n;jhl g;j; hkg g lkj;k go";
-	ptr = ft_split(s, c);
-	while (ptr[cc])
-		printf("|%s|\n", ptr[cc++]);
-	system ("leaks a.out");
-	return (0);
-}
-*/
+// int	main(void)
+// {
+// 	char		c;
+// 	char const	*s;
+// 	char		**ptr;
+// 	int			cc;
+
+// 	c = ' ';
+// 	cc = 0;
+// 	s = "gg   gkgkgkuhi n;jhl g;j; hkg g lkj;k go";
+// 	ptr = ft_split(s, c);
+// 	if (!ptr)
+// 		return (printf ("not ok\n"), 1);
+// 	while (ptr[cc])
+// 		printf("|%s|\n", ptr[cc++]);
+// 	system ("leaks a.out");
+// 	return (0);
+// }
 
 char	**ft_split(char const *s, char c)
 {

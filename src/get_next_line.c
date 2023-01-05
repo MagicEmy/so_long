@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 17:58:35 by emlicame          #+#    #+#             */
-/*   Updated: 2022/10/09 19:11:30 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/01/05 12:06:18 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	*read_bytes(int fd, char *read_buff)
 	if (!ret_line)
 		return (NULL);
 	ret_line[0] = '\0';
-	ret_line = ft_strjoin(ret_line, read_buff);
+	ret_line = gnl_ft_strjoin_free(ret_line, read_buff);
 	x = check_where_newline(ret_line, '\n');
 	while (res && x == -1)
 	{
@@ -76,7 +76,7 @@ char	*read_bytes(int fd, char *read_buff)
 		if (res >= 0)
 		{
 			read_buff[res] = '\0';
-			ret_line = ft_strjoin(ret_line, read_buff);
+			ret_line = gnl_ft_strjoin_free(ret_line, read_buff);
 			x = check_where_newline(read_buff, '\n');
 		}
 		if (res <= 0 && !ret_line[0])

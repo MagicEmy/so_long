@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   MLX42.h                                            :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: W2Wizard <w2.wizzard@gmail.com>              +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/12/28 00:33:01 by W2Wizard      #+#    #+#                 */
-/*   Updated: 2022/08/10 13:00:48 by lde-la-h      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   MLX42.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/28 00:33:01 by W2Wizard          #+#    #+#             */
+/*   Updated: 2023/01/04 18:38:17 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,7 @@ typedef enum mlx_errno
 	MLX_INVXPM,			// Something is wrong the given XPM file.
 	MLX_INVPOS,			// The specified X/Y positions are out of bounds.
 	MLX_INVDIM,			// The specified W/H dimensions are out of bounds.
-	MLX_INVIMG,			// The provided image is invalid, might indicate mismanagement of images.
+	MLX_INVIMG,			// Iimage is invalid, indicate mismanagement of images.
 	MLX_VERTFAIL,		// Failed to compile the vertex shader.
 	MLX_FRAGFAIL,		// Failed to compile the fragment shader.
 	MLX_SHDRFAIL,		// Failed to compile the shaders.

@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 16:14:41 by emlicame          #+#    #+#             */
-/*   Updated: 2022/10/09 19:12:47 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/01/05 12:05:59 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
 
-char	*ft_strjoin_free(char *s1, char *s2)
+char	*gnl_ft_strjoin_free(char *s1, char *s2)
 {
 	size_t	x;
 	size_t	total_len;

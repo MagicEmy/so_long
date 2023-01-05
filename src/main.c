@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: emlicame <emlicame@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/09/23 19:33:42 by emlicame      #+#    #+#                 */
-/*   Updated: 2022/12/26 13:12:02 by emanuela      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/23 19:33:42 by emlicame          #+#    #+#             */
+/*   Updated: 2023/01/05 16:49:21 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	error_exit(char *text)
 	exit(EXIT_FAILURE);
 }
 
-void	ft_free_mem(char ***array)
+void	sl_free_mem(char ***array)
 {
 	int	i;
 
@@ -45,9 +45,10 @@ t_data	*data_init(void)
 		error_exit("Memory allocation failed.");
 	data->width = 0;
 	data->height = 0;
-	data->map = (char **)malloc(sizeof (char *) * 1);
-	if (!data->map)
-		error_exit("Memory allocation failed.");
+	data->c = 0;
+	data->p = 0;
+	data->e = 0;
+	data->map = NULL;
 	return (data);
 }
 
@@ -61,17 +62,19 @@ int32_t	main(int argc, char **argv)
 		error_exit("Arguments are not valid.");
 	data = data_init();
 	mapfile_validation(argv[1], data);
-	mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true);
+	mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "MLX42", true);
 	if (!mlx)
 		exit(EXIT_FAILURE);
 	data->mlx = mlx;
-	init_context(data);
+	sl_get_images(data);
+	sl_images_to_window(data);
 	mlx_key_hook(mlx, key_hook, data);
 	mlx_loop(mlx);
+	sl_free_mem(&data->map);
 	mlx_terminate(mlx);
-	// ft_free_mem(&data->map);
 	free(data);
 	return (EXIT_SUCCESS);
 }
-
-	// mlx = mlx_init(len_str * TILE_+SIZE, nr_nl * TILE_SIZE, "MLX42", false!!);
+	// while (1)
+	// 	;
+	// mlx = mlx_init(len_str * TILE_+SIZE, nr_nl * TILE_SIZE, "MLX42", false);
