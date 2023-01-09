@@ -1,6 +1,10 @@
 {
 	"files.associations": {
 		"string": "c",
-		"iosfwd": "c"
+		"iosfwd": "c",
+		"__bit_reference": "c",
+		"__string": "c",
+		"algorithm": "c",
+		"string_view": "c"
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 16:14:41 by emlicame          #+#    #+#             */
-/*   Updated: 2023/01/05 12:05:59 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/01/09 17:47:57 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,30 @@ int	check_where_newline(char *buff, int c)
 		i++;
 	}
 	return (i);
+}
+
+char	*get_line(char *argv)
+{
+	char	*line;
+	char	*map_line;
+	int		fd;
+
+	fd = open(argv, O_RDONLY);
+	if (fd < 0)
+		error_exit("File opening failed.");
+	map_line = ft_strdup("");
+	if (!map_line)
+		error_exit("Memory allocation failed.");
+	line = NULL;
+	while (1)
+	{
+		free(line);
+		line = get_next_line(fd);
+		if (line == NULL || line[0] == '\n')
+			break ;
+		map_line = gnl_ft_strjoin_free(map_line, line);
+	}
+	free(line);
+	close(fd);
+	return (map_line);
 }

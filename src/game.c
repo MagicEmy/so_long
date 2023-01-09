@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 11:34:37 by emanuela          #+#    #+#             */
-/*   Updated: 2023/01/04 20:21:50 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/01/08 19:21:42 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 	if ((keydata.key == MLX_KEY_S || keydata.key == MLX_KEY_DOWN) && \
 	keydata.action == MLX_PRESS)
 		data->img.pc->instances[0].y += TILE_SIZE;
-	// if (data->tile->instances[0].x == data->tile->instances[1].x && \
-	// data->tile->instances[0].y == data->tile->instances[1].y)
-	// 	data->tile->instances[1].enabled = false;
 }
-
-//MLX_KEY_UP
+/*
+	if (data->tile->instances[0].x == data->tile->instances[1].x && \
+	data->tile->instances[0].y == data->tile->instances[1].y)
+		data->tile->instances[1].enabled = false;
+*/

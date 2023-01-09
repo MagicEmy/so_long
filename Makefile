@@ -7,8 +7,7 @@ SRC			:=	game.c \
 				main.c \
 				map_parsing.c \
 				mapfile_validation.c \
-				sl_get_images.c \
-				sl_images_to_window.c
+				draw_map.c
 OBJ			:= $(SRC:%.c=obj/%.o)
 LIBFT		:= libft/libft.a
 LIBFT_DIR	:= libft/
