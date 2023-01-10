@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 11:46:26 by emlicame          #+#    #+#             */
-/*   Updated: 2023/01/09 18:03:51 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/01/10 15:19:27 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,47 +107,3 @@ void	mapfile_validation(char *argv, t_data *data)
 	check_if_frame_is_wall(data);
 	player_start_pos(data);
 }
-
-/*
-// void	check_if_frame_is_wall(t_data *data)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (data->map[0][i])
-// 		if (data->map[0][i++] != '1')
-// 			error_exit("Invalid char in top frame.");
-// 	i = 0;
-// 	while (data->map[data->height - 1][i])
-// 		if (data->map[data->height - 1][i++] != '1')
-// 			error_exit("Invalid char in low frame.");
-// 	i = 0;
-// 	while (data->map[i])
-// 	{
-// 		if (*data->map[i] != '1' || data->map[i][data->width - 1] != '1')
-// 			error_exit("Invalid char in frame.");
-// 		i++;
-// 	}
-// }
-
-// void	check_if_rectangle(t_data *data)
-// {
-// 	int	i;
-// 	int	len;
-
-// 	i = 0;
-// 	len = 0;
-// 	while (data->map[data->height])
-// 		data->height++;
-// 	data->width = ft_strlen(*data->map);
-// 	while (data->map[i])
-// 	{
-// 		len = ft_strlen(data->map[i]);
-// 		if (len != data->width)
-// 			error_exit("Map has not a regular shape.");
-// 		i++;
-// 	}
-// 	if (data->height == data->width)
-// 		error_exit("Map is not rectangular.");
-// }
-*/

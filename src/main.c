@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 19:33:42 by emlicame          #+#    #+#             */
-/*   Updated: 2023/01/09 19:22:07 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/01/10 20:32:16 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	error_exit(char *text)
 {
-	ft_putstr_fd("\033[0;31mERROR\n", 2);
+	ft_putstr_fd("\033[0;31mE\033[0;33mRR\033[0;35mOR\n\033[0;34m", 2);
 	ft_putendl_fd(text, 2);
 	exit(EXIT_FAILURE);
 }
@@ -52,6 +52,8 @@ t_data	*data_init(void)
 	data->pc_y = 0;
 	data->to_exit = false;
 	data->to_collect = false;
+	data->coll_increment = 0;
+	data->movements = 0;
 	data->map = NULL;
 	return (data);
 }
@@ -67,18 +69,17 @@ int32_t	main(int argc, char **argv)
 	data = data_init();
 	mapfile_validation(argv[1], data);
 	mlx = mlx_init(TILE_SIZE * data->width, TILE_SIZE * data->height, \
-	"Spacewalk", true);
+	"Spacewalk", false);
 	if (!mlx)
 		exit(EXIT_FAILURE);
 	data->mlx = mlx;
 	map_drawing(data);
-	mlx_key_hook(mlx, key_hook, data);
+	mlx_key_hook(mlx, sl_key_hook, data);
 	mlx_loop(mlx);
 	sl_free_mem(&data->map);
-	mlx_terminate(mlx);
 	free(data);
+	mlx_terminate(mlx);
 	return (EXIT_SUCCESS);
 }
-	// while (1)
-	// 	;
-	// mlx = mlx_init(len_str * TILE_+SIZE, nr_nl * TILE_SIZE, "MLX42", false);
+
+// system ("leaks -q so_long");

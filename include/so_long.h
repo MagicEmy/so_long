@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 17:16:50 by emlicame          #+#    #+#             */
-/*   Updated: 2023/01/09 17:48:09 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/01/10 18:15:19 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,12 @@ typedef struct s_data
 	int				width;
 	int				height;
 	int				c;
+	int				coll_increment;
 	int				p;
 	int				e;
 	int				pc_x;
 	int				pc_y;
+	int				movements;
 	mlx_t			*mlx;
 	t_images		img;
 	char			**map;
@@ -58,7 +60,7 @@ typedef struct s_data
 
 void	error_exit(char *text);
 void	sl_free_mem(char ***array);
-void	key_hook(mlx_key_data_t keydata, void *param);
+void	sl_key_hook(mlx_key_data_t keydata, void *param);
 void	sl_get_images(t_data *data);
 void	sl_images_to_window(t_data *data);
 void	map_drawing(t_data *data);
