@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 20:44:44 by emlicame          #+#    #+#             */
-/*   Updated: 2023/01/09 17:57:37 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/01/11 19:36:40 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	sl_get_images(t_data *data)
 	data->img.sky = st_get_image(data->mlx, "images/sky.png");
 	data->img.collect = st_get_image(data->mlx, "images/star_small.png");
 	data->img.exit = st_get_image(data->mlx, "images/earth.png");
+	data->img.crown = st_get_image(data->mlx, "images/crown.png");
 }
 
 void	pc_and_exit_pos(t_data *data)
@@ -114,25 +115,3 @@ void	sl_images_to_window(t_data *data)
 		y++;
 	}
 }
-
-/*
-void	sl_images_to_window(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	i = mlx_image_to_window(data->mlx, data->img.wall, \
-	TILE_SIZE * 0, TILE_SIZE * 0); // z = 0
-	// printf ("int %d\n", i);
-	mlx_image_to_window(data->mlx, data->img.wall, \
-	TILE_SIZE * 1, TILE_SIZE * 0);
-	mlx_image_to_window(data->mlx, data->img.wall, \
-	TILE_SIZE * 2, TILE_SIZE * 0);
-	mlx_image_to_window(data->mlx, data->img.wall, \
-	TILE_SIZE * 3, TILE_SIZE * 0);
-	mlx_image_to_window(data->mlx, data->img.pc, \
-	TILE_SIZE * data->pc_x, TILE_SIZE * data->pc_y);
-}
-
-//mlx_free_image(void* content)
-*/

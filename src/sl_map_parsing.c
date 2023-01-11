@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 18:15:53 by emlicame          #+#    #+#             */
-/*   Updated: 2023/01/10 20:29:15 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/01/11 18:14:37 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	**copy_map(t_data *data)
 	i = 0;
 	copy_map = (char **)malloc(sizeof(char *) * (data->height + 1));
 	if (!copy_map)
-		error_exit("Memory allocation failed.");
+		error_exit(ERROR_MALLOC);
 	while (data->map[i])
 	{
 		copy_map[i] = ft_strdup(data->map[i]);
@@ -93,6 +93,6 @@ void	map_drawing(t_data *data)
 	copy = copy_map(data);
 	frontier_check(data, copy, data->pc_y, data->pc_x);
 	if (!data->to_exit || !data->to_collect)
-		error_exit("Invalid map, exit or collectibles not reachable");
+		error_exit(ERROR_INVALID_MAP);
 	sl_free_mem(&copy);
 }

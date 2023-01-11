@@ -6,12 +6,15 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 17:16:50 by emlicame          #+#    #+#             */
-/*   Updated: 2023/01/10 18:15:19 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/01/11 19:37:48 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
+
+# include "sl_defines.h"
+# include "colors.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE	1
@@ -38,6 +41,7 @@ typedef struct s_images
 	mlx_image_t		*pc;
 	mlx_image_t		*collect;
 	mlx_image_t		*exit;
+	mlx_image_t		*crown;
 }	t_images;
 
 typedef struct s_data
@@ -71,6 +75,7 @@ void	check_if_frame_is_wall(t_data *data);
 void	mapfile_validation(char *argv, t_data *info);
 void	map_validation(char *argv);
 void	map_parsing(char *map_line, t_data *data);
+void	sl_print_moves(t_data *data);
 
 //get_next_line
 char	*get_line(char *argv);

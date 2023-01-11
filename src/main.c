@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 19:33:42 by emlicame          #+#    #+#             */
-/*   Updated: 2023/01/10 20:32:16 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/01/11 19:43:47 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	error_exit(char *text)
 {
-	ft_putstr_fd("\033[0;31mE\033[0;33mRR\033[0;35mOR\n\033[0;34m", 2);
+	ft_putstr_fd(C_RED"E"C_YELLOW"RR"C_PURPLE"OR\t"C_BLUE, 2);
 	ft_putendl_fd(text, 2);
+	ft_putendl_fd(C_RESET, 2);
 	exit(EXIT_FAILURE);
 }
 
@@ -42,7 +43,7 @@ t_data	*data_init(void)
 
 	data = malloc(sizeof(t_data));
 	if (!data)
-		error_exit("Memory allocation failed.");
+		error_exit(ERROR_MALLOC);
 	data->width = 0;
 	data->height = 0;
 	data->c = 0;
@@ -53,10 +54,16 @@ t_data	*data_init(void)
 	data->to_exit = false;
 	data->to_collect = false;
 	data->coll_increment = 0;
-	data->movements = 0;
+	data->movements = -1;
 	data->map = NULL;
 	return (data);
 }
+
+// void	f(void)
+// {
+// 	system("leaks -q so_long");
+// }
+// atexit(f);
 
 int32_t	main(int argc, char **argv)
 {
@@ -74,6 +81,7 @@ int32_t	main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	data->mlx = mlx;
 	map_drawing(data);
+	sl_print_moves(data);
 	mlx_key_hook(mlx, sl_key_hook, data);
 	mlx_loop(mlx);
 	sl_free_mem(&data->map);

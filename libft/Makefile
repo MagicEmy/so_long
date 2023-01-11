@@ -31,8 +31,7 @@ SRC :=	ft_atoi.c 	 \
 		ft_strtrim.c	\
 		ft_substr.c		\
 		ft_tolower.c	\
-		ft_toupper.c\
-
+		ft_toupper.c
 BONUS = ft_lstadd_back.c	\
 		ft_lstadd_front.c	\
 		ft_lstclear.c		\
@@ -41,8 +40,7 @@ BONUS = ft_lstadd_back.c	\
 		ft_lstlast.c		\
 		ft_lstmap.c			\
 		ft_lstnew.c			\
-		ft_lstsize.c\
-
+		ft_lstsize.c
 OBJ	:= $(SRC:.c=.o)
 OBJBONUS = ${BONUS:.c=.o}
 CC := gcc
@@ -50,9 +48,10 @@ CFLAGS := -Wall -Wextra -Werror
 LIBC := ar -rcs
 
 all: $(NAME)
+	@echo "\033[36;1mLibft Done\033[0m"
 
 $(NAME): $(OBJ) $(HEADERS)
-	$(LIBC) $(NAME) $(OBJ)
+	@$(LIBC) $(NAME) $(OBJ)
 
 bonus:	${OBJ} ${OBJBONUS}
 		$(LIBC) ${NAME} ${OBJ} ${OBJBONUS}
@@ -62,7 +61,7 @@ bonus:	${OBJ} ${OBJBONUS}
 #	./$(NAME)
 
 %.o: %.c 
-	$(CC) $(CFLAGS) -o $@ -c $<
+	@$(CC) $(CFLAGS) -o $@ -c $<
 	
 clean:
 	@rm -f $(OBJ) ${OBJBONUS}

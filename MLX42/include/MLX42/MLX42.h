@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 00:33:01 by W2Wizard          #+#    #+#             */
-/*   Updated: 2023/01/10 17:09:27 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/01/11 19:27:47 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -575,6 +575,7 @@ void mlx_delete_texture(mlx_texture_t* texture);
  * @param[in] xpm The xpm texture to delete.
  */
 void mlx_delete_xpm42(xpm_t* xpm);
+
 
 /**
  * Converts a given texture to an image.
