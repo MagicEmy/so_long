@@ -31,3 +31,4 @@ The player’s goal is to collect all collectibles present on the map then escap
 |`A`, `←`|Move left|
 |`D`, `→`|Move right|
 |`ESC ⎋`|Close the game window|
+
