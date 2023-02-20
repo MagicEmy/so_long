@@ -32,3 +32,4 @@ The player’s goal is to collect all collectibles present on the map then escap
 |`D`, `→`|Move right|
 |`ESC ⎋`|Close the game window|
 
+<img width="1091" alt="so_long_play_screen_shot" src="https://user-images.githubusercontent.com/57005960/220132805-19e7abb9-844d-42c7-9d66-66178adc7efb.png">
