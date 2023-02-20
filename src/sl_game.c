@@ -1,36 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.c                                             :+:      :+:    :+:   */
+/*   sl_game.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 11:34:37 by emanuela          #+#    #+#             */
-/*   Updated: 2023/01/11 19:38:37 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:56:25 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-// static void	print_moves(t_data *data)
-// {
-// 	char				*movements;
-// 	static mlx_image_t	*mlx_img_ptr = NULL;
-
-// 	data->movements++;
-// 	movements = ft_itoa(data->movements);
-// 	if (data->img.pc->instances[0].enabled == true)
-// 	{
-// 		if (!mlx_img_ptr)
-// 			mlx_put_string(data->mlx, "Steps:", 5, 40);
-// 		else
-// 			mlx_delete_image(data->mlx, mlx_img_ptr);
-// 		mlx_img_ptr = mlx_put_string(data->mlx, movements, 70, 40);
-// 		ft_putstr_fd(C_1UP_DEL, 1);
-// 		ft_putendl_fd(movements, 1);
-// 	}
-// 	free (movements);
-// }
 
 static int	is_wall(t_data *data, int x, int y)
 {

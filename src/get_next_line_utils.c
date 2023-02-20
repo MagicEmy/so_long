@@ -6,7 +6,7 @@
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 16:14:41 by emlicame          #+#    #+#             */
-/*   Updated: 2023/01/09 17:47:57 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/01/12 17:43:34 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char	*get_line(char *argv)
 		error_exit("File opening failed.");
 	map_line = ft_strdup("");
 	if (!map_line)
-		error_exit("Memory allocation failed.");
+		error_exit(ERROR_MALLOC);
 	line = NULL;
 	while (1)
 	{

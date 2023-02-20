@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_parsing.c                                      :+:      :+:    :+:   */
+/*   sl_map_parsing.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emlicame <emlicame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 18:15:53 by emlicame          #+#    #+#             */
-/*   Updated: 2023/01/11 18:14:37 by emlicame         ###   ########.fr       */
+/*   Updated: 2023/01/12 17:42:52 by emlicame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ char	**copy_map(t_data *data)
 	while (data->map[i])
 	{
 		copy_map[i] = ft_strdup(data->map[i]);
+		if (!copy_map)
+			error_exit(ERROR_MALLOC);
 		i++;
 	}
 	copy_map[i] = NULL;
